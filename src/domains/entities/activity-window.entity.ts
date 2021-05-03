@@ -14,7 +14,7 @@ export class ActivityWindowEntity {
   }
 
   public calculateBalance(accountId: AccountId): MoneyEntity {
-    const depositeBalance = this.activities
+    const depositedBalance = this.activities
       .filter(
         (activity: ActivityEntity) => activity.targetAccountId === accountId,
       )
@@ -28,6 +28,6 @@ export class ActivityWindowEntity {
       .map((activity: ActivityEntity) => activity.money)
       .reduce(MoneyEntity.add, MoneyEntity.ZERO());
 
-    return MoneyEntity.add(depositeBalance, withdrawnBalance.negate());
+    return MoneyEntity.add(depositedBalance, withdrawnBalance.negate());
   }
 }

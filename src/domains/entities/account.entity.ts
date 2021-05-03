@@ -37,6 +37,7 @@ export class AccountEntity {
 
     const withdrawal: ActivityEntity = new ActivityEntity(
       this._id,
+      this._id,
       targetAccountId,
       new Date(),
       money,
@@ -47,6 +48,7 @@ export class AccountEntity {
   }
   public deposite(money: MoneyEntity, sourceAccountId: AccountId): boolean{
     const deposite = new ActivityEntity(
+      this._id,
       sourceAccountId,
       this._id,
       new Date(),
